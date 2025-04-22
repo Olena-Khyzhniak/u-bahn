@@ -20,7 +20,7 @@ public class MainApp extends Application {
     public void start(Stage stage) {
         try {
             // Adjust the size as needed or use preferred dimensions and confirm the FXML file name
-            scene = new Scene(loadFXML("Main"), 500, 500);
+            scene = new Scene(loadFXML("Main1"), 500, 500);
             stage.setScene(scene);
             stage.setTitle("Vienna U-Bahn Route Finder");
             stage.show();
