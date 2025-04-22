@@ -7,7 +7,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
 
+<?import java.lang.String?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="167.0" layoutY="16.0" text="Vienna U-Bahn Route Finder" textFill="#f2eded">
@@ -41,8 +43,27 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox layoutX="131.0" layoutY="68.0" prefWidth="150.0" />
-      <ComboBox layoutX="177.0" layoutY="114.0" prefWidth="150.0" />
+      <ComboBox layoutX="131.0" layoutY="68.0" prefWidth="150.0" >
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Leopoldau" />
+               <String fx:value="Seestadt" />
+               <String fx:value="Simmering" />
+               <String fx:value="Hütteldorf" />
+               <String fx:value="Siebenhirten" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <ComboBox layoutX="177.0" layoutY="114.0" prefWidth="150.0" >
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Oberlaa" />
+            <String fx:value="Ottakring" />
+            <String fx:value="Heiligenstadt" />
+            <String fx:value="Floridsdorf" />
+            </FXCollections>
+         </items>
+      </ComboBox>
       <ImageView fitHeight="158.0" fitWidth="205.0" layoutX="45.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Screenshot%202025-04-22%20at%2013.57.41.png" />
