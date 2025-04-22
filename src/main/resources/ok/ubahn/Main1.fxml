@@ -249,7 +249,7 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <ImageView fitHeight="257.0" fitWidth="468.0" layoutX="45.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="handleImageClicked">
+      <ImageView fitHeight="257.0" fitWidth="468.0" layoutX="45.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" >
          <image>
             <Image url="@Screenshot%202025-04-22%20at%2013.57.41.png" />
          </image>
