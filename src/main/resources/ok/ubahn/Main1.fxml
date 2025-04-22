@@ -5,14 +5,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ok.ubahn.Controller.RouteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="680.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ok.ubahn.Controller.RouteController">
    <children>
-      <Label layoutX="167.0" layoutY="16.0" text="Vienna U-Bahn Route Finder" textFill="#f2eded">
+      <Label layoutX="139.0" layoutY="16.0" text="Vienna U-Bahn Route Finder" textFill="#f2eded">
          <font>
             <Font size="22.0" />
          </font>
@@ -43,216 +44,218 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox layoutX="131.0" layoutY="68.0" prefWidth="150.0">
+      <ComboBox fx:id="startStationComboBox" layoutX="131.0" layoutY="68.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Leopoldau" />
                <String fx:value="GroBfeldsiedlung" />
                <String fx:value="Aderklaaer StraBe" />
-               <String fx:value="Rennbahnweg"/>
-               <String fx:value="Kagraner Platz"/>
-               <String fx:value="Kragan"/>
-               <String fx:value="Alte Donau"/>
-               <String fx:value="Kaisermühlen - VIC"/>
-               <String fx:value="Donauinsel"/>
-               <String fx:value="VorgartenstraBe"/>
-               <String fx:value="Praterstern"/>
-               <String fx:value="Nestroyplatz"/>
-               <String fx:value="Schwedenplatz"/>
-               <String fx:value="Stephansplatz"/>
-               <String fx:value="Karlsplatz"/>
-               <String fx:value="Taubstummengasse"/>
-               <String fx:value="Sūdtiroler Platz - Hauptbahnhof"/>
-               <String fx:value="Keplerplatz"/>
-               <String fx:value="Reumannplatz"/>
-               <String fx:value="TroststraBe"/>
-               <String fx:value="Altes Landgut"/>
-               <String fx:value="Alaudagasse"/>
-               <String fx:value="Neulaa"/>
-               <String fx:value="Oberlaa"/>
+               <String fx:value="Rennbahnweg" />
+               <String fx:value="Kagraner Platz" />
+               <String fx:value="Kragan" />
+               <String fx:value="Alte Donau" />
+               <String fx:value="Kaisermühlen - VIC" />
+               <String fx:value="Donauinsel" />
+               <String fx:value="VorgartenstraBe" />
+               <String fx:value="Praterstern" />
+               <String fx:value="Nestroyplatz" />
+               <String fx:value="Schwedenplatz" />
+               <String fx:value="Stephansplatz" />
+               <String fx:value="Karlsplatz" />
+               <String fx:value="Taubstummengasse" />
+               <String fx:value="Sūdtiroler Platz - Hauptbahnhof" />
+               <String fx:value="Keplerplatz" />
+               <String fx:value="Reumannplatz" />
+               <String fx:value="TroststraBe" />
+               <String fx:value="Altes Landgut" />
+               <String fx:value="Alaudagasse" />
+               <String fx:value="Neulaa" />
+               <String fx:value="Oberlaa" />
                <String fx:value="Seestadt" />
-               <String fx:value="Aspem Nord"/>
-               <String fx:value="HausfeldstraBe"/>
-               <String fx:value="AspernstraBe"/>
-               <String fx:value="Donauspital"/>
-               <String fx:value="Hardeggasse"/>
-               <String fx:value="Stadlau"/>
-               <String fx:value="Donaustadtbrūcke"/>
-               <String fx:value="Donaumarina"/>
-               <String fx:value="Stadion"/>
-               <String fx:value="Krieau"/>
-               <String fx:value="Messe - Prater"/>
-               <String fx:value="TaborstraBe"/>
-               <String fx:value="Schottenring"/>
-               <String fx:value="Schottentor - Universität"/>
-               <String fx:value="Rathaus"/>
-               <String fx:value="Volkstheater"/>
-               <String fx:value="Museums - quartier"/>
+               <String fx:value="Aspem Nord" />
+               <String fx:value="HausfeldstraBe" />
+               <String fx:value="AspernstraBe" />
+               <String fx:value="Donauspital" />
+               <String fx:value="Hardeggasse" />
+               <String fx:value="Stadlau" />
+               <String fx:value="Donaustadtbrūcke" />
+               <String fx:value="Donaumarina" />
+               <String fx:value="Stadion" />
+               <String fx:value="Krieau" />
+               <String fx:value="Messe - Prater" />
+               <String fx:value="TaborstraBe" />
+               <String fx:value="Schottenring" />
+               <String fx:value="Schottentor - Universität" />
+               <String fx:value="Rathaus" />
+               <String fx:value="Volkstheater" />
+               <String fx:value="Museums - quartier" />
                <String fx:value="Simmering" />
-               <String fx:value="Enkplatz"/>
-               <String fx:value="ZippererstraBe"/>
-               <String fx:value="Gasometer"/>
-               <String fx:value="Erdberg"/>
-               <String fx:value="Schlachthausgasse"/>
-               <String fx:value="Kardinal-Nagl-Platz"/>
-               <String fx:value="Rouchusgasse"/>
-               <String fx:value="LandstraBe"/>
-               <String fx:value="Stubentor"/>
-               <String fx:value="Herrengasse"/>
-               <String fx:value="Neubaugasse"/>
-               <String fx:value="Zieglergasse"/>
-               <String fx:value="Westbahnhof"/>
-               <String fx:value="Schwegler - straBe"/>
-               <String fx:value="JohnstraBe"/>
-               <String fx:value="Hũtteldorfer StraBe"/>
-               <String fx:value="KendlerstraBe"/>
-               <String fx:value="Ottakring"/>
+               <String fx:value="Enkplatz" />
+               <String fx:value="ZippererstraBe" />
+               <String fx:value="Gasometer" />
+               <String fx:value="Erdberg" />
+               <String fx:value="Schlachthausgasse" />
+               <String fx:value="Kardinal-Nagl-Platz" />
+               <String fx:value="Rouchusgasse" />
+               <String fx:value="LandstraBe" />
+               <String fx:value="Stubentor" />
+               <String fx:value="Herrengasse" />
+               <String fx:value="Neubaugasse" />
+               <String fx:value="Zieglergasse" />
+               <String fx:value="Westbahnhof" />
+               <String fx:value="Schwegler - straBe" />
+               <String fx:value="JohnstraBe" />
+               <String fx:value="Hũtteldorfer StraBe" />
+               <String fx:value="KendlerstraBe" />
+               <String fx:value="Ottakring" />
                <String fx:value="Hütteldorf" />
-               <String fx:value="Ober St. Veit"/>
-               <String fx:value="Unter St. Veit"/>
-               <String fx:value="Braunschweiggasse"/>
-               <String fx:value="Hietzing, Kennedybrücke"/>
-               <String fx:value="Schönbrunn"/>
-               <String fx:value="Meidling HauptstraBe"/>
-               <String fx:value="Längenfeldgasse"/>
-               <String fx:value="Kettenbrücken - gasse"/>
-               <String fx:value="Stadtpark"/>
-               <String fx:value="RoBauer Lände"/>
-               <String fx:value="Friedensbrücke"/>
-               <String fx:value="Spittelau"/>
-               <String fx:value="Heiligenstadt"/>
+               <String fx:value="Ober St. Veit" />
+               <String fx:value="Unter St. Veit" />
+               <String fx:value="Braunschweiggasse" />
+               <String fx:value="Hietzing, Kennedybrücke" />
+               <String fx:value="Schönbrunn" />
+               <String fx:value="Meidling HauptstraBe" />
+               <String fx:value="Längenfeldgasse" />
+               <String fx:value="Kettenbrücken - gasse" />
+               <String fx:value="Stadtpark" />
+               <String fx:value="RoBauer Lände" />
+               <String fx:value="Friedensbrücke" />
+               <String fx:value="Spittelau" />
+               <String fx:value="Heiligenstadt" />
                <String fx:value="Siebenhirten" />
-               <String fx:value="PerfektastraBe"/>
-               <String fx:value="Erlaaer StraBe"/>
-               <String fx:value="Alterlaa"/>
-               <String fx:value="Am Schöpfwerk"/>
-               <String fx:value="Tscherttegasse"/>
-               <String fx:value="Bahnhof Meidling"/>
-               <String fx:value="NiederhofstraBe"/>
-               <String fx:value="Gumpendorfer StraBe"/>
-               <String fx:value="Burggasse - Stadthalle"/>
-               <String fx:value="ThaliastraBe"/>
-               <String fx:value="Josefstädter StraBe"/>
-               <String fx:value="Alser StraBe"/>
-               <String fx:value="Michelbeuern - AKH"/>
-               <String fx:value="Währinger StraBe - Volksoper"/>
-               <String fx:value="NuBdorfer StraBe"/>
-               <String fx:value="JägerstraBe"/>
-               <String fx:value="Dresdner StraBe"/>
-               <String fx:value="Handelskai"/>
-               <String fx:value="Neue Donau"/>
-               <String fx:value="Floridsdirf"/>
+               <String fx:value="PerfektastraBe" />
+               <String fx:value="Erlaaer StraBe" />
+               <String fx:value="Alterlaa" />
+               <String fx:value="Am Schöpfwerk" />
+               <String fx:value="Tscherttegasse" />
+               <String fx:value="Bahnhof Meidling" />
+               <String fx:value="NiederhofstraBe" />
+               <String fx:value="Gumpendorfer StraBe" />
+               <String fx:value="Burggasse - Stadthalle" />
+               <String fx:value="ThaliastraBe" />
+               <String fx:value="Josefstädter StraBe" />
+               <String fx:value="Alser StraBe" />
+               <String fx:value="Michelbeuern - AKH" />
+               <String fx:value="Währinger StraBe - Volksoper" />
+               <String fx:value="NuBdorfer StraBe" />
+               <String fx:value="JägerstraBe" />
+               <String fx:value="Dresdner StraBe" />
+               <String fx:value="Handelskai" />
+               <String fx:value="Neue Donau" />
+               <String fx:value="Floridsdirf" />
             </FXCollections>
          </items>
       </ComboBox>
-      <ComboBox layoutX="177.0" layoutY="114.0" prefWidth="150.0">
+      <ComboBox fx:id="destinationStationComboBox" layoutX="177.0" layoutY="114.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Leopoldau" />
                <String fx:value="GroBfeldsiedlung" />
                <String fx:value="Aderklaaer StraBe" />
-               <String fx:value="Rennbahnweg"/>
-               <String fx:value="Kagraner Platz"/>
-               <String fx:value="Kragan"/>
-               <String fx:value="Alte Donau"/>
-               <String fx:value="Kaisermühlen - VIC"/>
-               <String fx:value="Donauinsel"/>
-               <String fx:value="VorgartenstraBe"/>
-               <String fx:value="Praterstern"/>
-               <String fx:value="Nestroyplatz"/>
-               <String fx:value="Schwedenplatz"/>
-               <String fx:value="Stephansplatz"/>
-               <String fx:value="Karlsplatz"/>
-               <String fx:value="Taubstummengasse"/>
-               <String fx:value="Sūdtiroler Platz - Hauptbahnhof"/>
-               <String fx:value="Keplerplatz"/>
-               <String fx:value="Reumannplatz"/>
-               <String fx:value="TroststraBe"/>
-               <String fx:value="Altes Landgut"/>
-               <String fx:value="Alaudagasse"/>
-               <String fx:value="Neulaa"/>
-               <String fx:value="Oberlaa"/>
+               <String fx:value="Rennbahnweg" />
+               <String fx:value="Kagraner Platz" />
+               <String fx:value="Kragan" />
+               <String fx:value="Alte Donau" />
+               <String fx:value="Kaisermühlen - VIC" />
+               <String fx:value="Donauinsel" />
+               <String fx:value="VorgartenstraBe" />
+               <String fx:value="Praterstern" />
+               <String fx:value="Nestroyplatz" />
+               <String fx:value="Schwedenplatz" />
+               <String fx:value="Stephansplatz" />
+               <String fx:value="Karlsplatz" />
+               <String fx:value="Taubstummengasse" />
+               <String fx:value="Sūdtiroler Platz - Hauptbahnhof" />
+               <String fx:value="Keplerplatz" />
+               <String fx:value="Reumannplatz" />
+               <String fx:value="TroststraBe" />
+               <String fx:value="Altes Landgut" />
+               <String fx:value="Alaudagasse" />
+               <String fx:value="Neulaa" />
+               <String fx:value="Oberlaa" />
                <String fx:value="Seestadt" />
-               <String fx:value="Aspem Nord"/>
-               <String fx:value="HausfeldstraBe"/>
-               <String fx:value="AspernstraBe"/>
-               <String fx:value="Donauspital"/>
-               <String fx:value="Hardeggasse"/>
-               <String fx:value="Stadlau"/>
-               <String fx:value="Donaustadtbrūcke"/>
-               <String fx:value="Donaumarina"/>
-               <String fx:value="Stadion"/>
-               <String fx:value="Krieau"/>
-               <String fx:value="Messe - Prater"/>
-               <String fx:value="TaborstraBe"/>
-               <String fx:value="Schottenring"/>
-               <String fx:value="Schottentor - Universität"/>
-               <String fx:value="Rathaus"/>
-               <String fx:value="Volkstheater"/>
-               <String fx:value="Museums - quartier"/>
+               <String fx:value="Aspem Nord" />
+               <String fx:value="HausfeldstraBe" />
+               <String fx:value="AspernstraBe" />
+               <String fx:value="Donauspital" />
+               <String fx:value="Hardeggasse" />
+               <String fx:value="Stadlau" />
+               <String fx:value="Donaustadtbrūcke" />
+               <String fx:value="Donaumarina" />
+               <String fx:value="Stadion" />
+               <String fx:value="Krieau" />
+               <String fx:value="Messe - Prater" />
+               <String fx:value="TaborstraBe" />
+               <String fx:value="Schottenring" />
+               <String fx:value="Schottentor - Universität" />
+               <String fx:value="Rathaus" />
+               <String fx:value="Volkstheater" />
+               <String fx:value="Museums - quartier" />
                <String fx:value="Simmering" />
-               <String fx:value="Enkplatz"/>
-               <String fx:value="ZippererstraBe"/>
-               <String fx:value="Gasometer"/>
-               <String fx:value="Erdberg"/>
-               <String fx:value="Schlachthausgasse"/>
-               <String fx:value="Kardinal-Nagl-Platz"/>
-               <String fx:value="Rouchusgasse"/>
-               <String fx:value="LandstraBe"/>
-               <String fx:value="Stubentor"/>
-               <String fx:value="Herrengasse"/>
-               <String fx:value="Neubaugasse"/>
-               <String fx:value="Zieglergasse"/>
-               <String fx:value="Westbahnhof"/>
-               <String fx:value="Schwegler - straBe"/>
-               <String fx:value="JohnstraBe"/>
-               <String fx:value="Hũtteldorfer StraBe"/>
-               <String fx:value="KendlerstraBe"/>
-               <String fx:value="Ottakring"/>
+               <String fx:value="Enkplatz" />
+               <String fx:value="ZippererstraBe" />
+               <String fx:value="Gasometer" />
+               <String fx:value="Erdberg" />
+               <String fx:value="Schlachthausgasse" />
+               <String fx:value="Kardinal-Nagl-Platz" />
+               <String fx:value="Rouchusgasse" />
+               <String fx:value="LandstraBe" />
+               <String fx:value="Stubentor" />
+               <String fx:value="Herrengasse" />
+               <String fx:value="Neubaugasse" />
+               <String fx:value="Zieglergasse" />
+               <String fx:value="Westbahnhof" />
+               <String fx:value="Schwegler - straBe" />
+               <String fx:value="JohnstraBe" />
+               <String fx:value="Hũtteldorfer StraBe" />
+               <String fx:value="KendlerstraBe" />
+               <String fx:value="Ottakring" />
                <String fx:value="Hütteldorf" />
-               <String fx:value="Ober St. Veit"/>
-               <String fx:value="Unter St. Veit"/>
-               <String fx:value="Braunschweiggasse"/>
-               <String fx:value="Hietzing, Kennedybrücke"/>
-               <String fx:value="Schönbrunn"/>
-               <String fx:value="Meidling HauptstraBe"/>
-               <String fx:value="Längenfeldgasse"/>
-               <String fx:value="Kettenbrücken - gasse"/>
-               <String fx:value="Stadtpark"/>
-               <String fx:value="RoBauer Lände"/>
-               <String fx:value="Friedensbrücke"/>
-               <String fx:value="Spittelau"/>
-               <String fx:value="Heiligenstadt"/>
+               <String fx:value="Ober St. Veit" />
+               <String fx:value="Unter St. Veit" />
+               <String fx:value="Braunschweiggasse" />
+               <String fx:value="Hietzing, Kennedybrücke" />
+               <String fx:value="Schönbrunn" />
+               <String fx:value="Meidling HauptstraBe" />
+               <String fx:value="Längenfeldgasse" />
+               <String fx:value="Kettenbrücken - gasse" />
+               <String fx:value="Stadtpark" />
+               <String fx:value="RoBauer Lände" />
+               <String fx:value="Friedensbrücke" />
+               <String fx:value="Spittelau" />
+               <String fx:value="Heiligenstadt" />
                <String fx:value="Siebenhirten" />
-               <String fx:value="PerfektastraBe"/>
-               <String fx:value="Erlaaer StraBe"/>
-               <String fx:value="Alterlaa"/>
-               <String fx:value="Am Schöpfwerk"/>
-               <String fx:value="Tscherttegasse"/>
-               <String fx:value="Bahnhof Meidling"/>
-               <String fx:value="NiederhofstraBe"/>
-               <String fx:value="Gumpendorfer StraBe"/>
-               <String fx:value="Burggasse - Stadthalle"/>
-               <String fx:value="ThaliastraBe"/>
-               <String fx:value="Josefstädter StraBe"/>
-               <String fx:value="Alser StraBe"/>
-               <String fx:value="Michelbeuern - AKH"/>
-               <String fx:value="Währinger StraBe - Volksoper"/>
-               <String fx:value="NuBdorfer StraBe"/>
-               <String fx:value="JägerstraBe"/>
-               <String fx:value="Dresdner StraBe"/>
-               <String fx:value="Handelskai"/>
-               <String fx:value="Neue Donau"/>
-               <String fx:value="Floridsdirf"/>
+               <String fx:value="PerfektastraBe" />
+               <String fx:value="Erlaaer StraBe" />
+               <String fx:value="Alterlaa" />
+               <String fx:value="Am Schöpfwerk" />
+               <String fx:value="Tscherttegasse" />
+               <String fx:value="Bahnhof Meidling" />
+               <String fx:value="NiederhofstraBe" />
+               <String fx:value="Gumpendorfer StraBe" />
+               <String fx:value="Burggasse - Stadthalle" />
+               <String fx:value="ThaliastraBe" />
+               <String fx:value="Josefstädter StraBe" />
+               <String fx:value="Alser StraBe" />
+               <String fx:value="Michelbeuern - AKH" />
+               <String fx:value="Währinger StraBe - Volksoper" />
+               <String fx:value="NuBdorfer StraBe" />
+               <String fx:value="JägerstraBe" />
+               <String fx:value="Dresdner StraBe" />
+               <String fx:value="Handelskai" />
+               <String fx:value="Neue Donau" />
+               <String fx:value="Floridsdirf" />
             </FXCollections>
          </items>
       </ComboBox>
-      <ImageView fitHeight="158.0" fitWidth="205.0" layoutX="45.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="257.0" fitWidth="468.0" layoutX="45.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Screenshot%202025-04-22%20at%2013.57.41.png" />
          </image>
       </ImageView>
-      <Button fx:id="onFindRoute" layoutX="45.0" layoutY="156.0" mnemonicParsing="false"  onAction="#onFindRoute" text="Find Route" />
-      <Button fx:id="onClear" layoutX="139.0" layoutY="156.0" mnemonicParsing="false"  onAction="#onClear" text="Clear" />
+      <Button fx:id="onFindRoute" layoutX="45.0" layoutY="156.0" mnemonicParsing="false" onAction="#onFindRoute" text="Find Route" />
+      <Button fx:id="onClear" layoutX="139.0" layoutY="156.0" mnemonicParsing="false" onAction="#onClear" text="Clear" />
+      <Label layoutX="324.0" layoutY="72.0" text="Cost :" textFill="#fffefe" />
+      <ListView layoutX="364.0" layoutY="63.0" prefHeight="34.0" prefWidth="138.0" />
    </children>
 </AnchorPane>

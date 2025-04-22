@@ -1,6 +1,7 @@
 package ok.ubahn.Controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 
 import java.util.List;
 public class RouteController {
@@ -16,7 +17,15 @@ public class RouteController {
     }
 
     @FXML
+    private ComboBox<String> startStationComboBox;
+
+    @FXML
+    private ComboBox<String> destinationStationComboBox;
+
+    @FXML
     public void onClear() {
+        startStationComboBox.getSelectionModel().clearSelection();
+        destinationStationComboBox.getSelectionModel().clearSelection();
         // Logic to clear inputs and outputs
         System.out.println("Clear action triggered");
     }
