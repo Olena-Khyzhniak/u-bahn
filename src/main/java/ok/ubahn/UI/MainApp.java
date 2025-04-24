@@ -19,8 +19,8 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            // Adjust the size as needed or use preferred dimensions and confirm the FXML file name
-            scene = new Scene(loadFXML("Main1"), 750, 750);
+
+            scene = new Scene(loadFXML("Main"), 750, 750);
             stage.setScene(scene);
             stage.setTitle("Vienna U-Bahn Route Finder");
             stage.show();
@@ -34,7 +34,7 @@ public class MainApp extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/ok/ubahn/Main1.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/ok/ubahn/Main.fxml"));
         return fxmlLoader.load();
     }
 
