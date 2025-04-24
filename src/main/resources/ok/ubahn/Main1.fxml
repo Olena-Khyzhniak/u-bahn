@@ -249,9 +249,9 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <ImageView fitHeight="257.0" fitWidth="468.0" layoutX="45.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" >
+      <ImageView fitHeight="450.0" fitWidth="660.0" layoutX="45.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" >
          <image>
-            <Image url="@Screenshot%202025-04-22%20at%2013.57.41.png" />
+            <Image url="@map.png" />
          </image>
       </ImageView>
       <Button fx:id="onFindRoute" layoutX="45.0" layoutY="156.0" mnemonicParsing="false" onAction="#onFindRoute" text="Find Route" />
