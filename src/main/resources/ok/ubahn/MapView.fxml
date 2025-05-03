@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.image.ImageView?>
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Button?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ok.ubahn.Controller.MapController">
-    <Canvas fx:id="mapCanvas" width="800" height="600">
+ <children>
+  <Button text="Test" />
+ </children>
+ <!--   <Canvas fx:id="mapCanvas" width="800" height="600">
     <ImageView fitHeight="450.0" fitWidth="660.0" layoutX="45.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" >
         <image>
             <Image url="@map.png" />
         </image>
     </ImageView>
-    <Canvas/>
+    </Canvas>
+    //-->
 </AnchorPane>
 

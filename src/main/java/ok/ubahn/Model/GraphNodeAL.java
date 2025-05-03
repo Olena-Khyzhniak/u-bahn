@@ -9,12 +9,29 @@ public class GraphNodeAL<T> {
     public int nodeValue; // algorithm use e.g Djikstra , DFS etc....
     public List<GraphLinkAL> adjList = new ArrayList<>(); // List for connected nodes
 
-    public GraphNodeAL(T data,String name){
+    public  int x;
+    public  int y;
+    public GraphNodeAL(T data,String name, int x, int y){
         this.data = data;
         this.name = name;
         this.nodeValue = Integer.MAX_VALUE;
         this.adjList = new ArrayList<>();
+        this.x = x;
+        this.y = y;
     }
+
+    public GraphNodeAL(T data, String name) {
+        this(data, name, -1, -1);
+    }
+
+    public void setCoordinates(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() { return x; }
+
+    public int getY() { return y; }
 
     public void addLink(GraphNodeAL<T> destination, double cost, String line){
         adjList.add(new GraphLinkAL(this, destination, cost, line));
