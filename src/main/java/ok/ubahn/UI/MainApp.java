@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ok.ubahn.Controller.RouteController;
+import ok.ubahn.Model.Graph;
+import ok.ubahn.Util.CSVLoader;
 
 /**
  * JavaFX App
@@ -34,7 +37,7 @@ public class MainApp extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/ok/ubahn/Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/ok/ubahn/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
