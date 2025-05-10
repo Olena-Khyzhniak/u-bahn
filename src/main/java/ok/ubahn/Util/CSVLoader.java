@@ -88,10 +88,10 @@ public class CSVLoader {
 
         Graph graph = new Graph();
 
-       // String stationCsv = "/ok/ubahn/stations.csv";
-       try (BufferedReader br = new BufferedReader(new InputStreamReader(
+        // String stationCsv = "/ok/ubahn/stations.csv";
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(
 
-CSVLoader.class.getResourceAsStream("/ok/ubahn/stations.csv")))) {
+                CSVLoader.class.getResourceAsStream("/ok/ubahn/stations.csv")))) {
 
             String line=br.readLine(); //read header line
             while ((line = br.readLine()) != null) {
@@ -104,7 +104,7 @@ CSVLoader.class.getResourceAsStream("/ok/ubahn/stations.csv")))) {
 
                 GraphNodeAL<String> node = new GraphNodeAL<>(name, name, x, y);
                 graph.addStation(node);
-                StationRegistry.register(name, x, y);
+                StationRegistry.register(node);
             }
 
         } catch (Exception e) {

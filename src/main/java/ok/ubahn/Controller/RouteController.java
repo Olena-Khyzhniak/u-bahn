@@ -1,5 +1,6 @@
 package ok.ubahn.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
@@ -22,6 +23,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 
 
@@ -76,7 +78,7 @@ public class RouteController implements Initializable {
 
 
     @FXML
-    private void onFindRoute() {
+    private void onFindRoute(ActionEvent event) {
         String start = startStationComboBox.getValue();
         String end = destinationStationComboBox.getValue();
         String algorithm = algorithmComboBox.getValue();
@@ -118,16 +120,16 @@ public class RouteController implements Initializable {
         GraphAlgorithms.CostedPath result;
 
         switch (algorithm) {
-            case "Dijkstra":
+            case "Cheapest Path":
                 result = GraphAlgorithms.findCheapestPathDijkstra(start, endName);
                 break;
-            case "DFS":
+            case "Depth First":
                 result = GraphAlgorithms.DFSCheapestPath(start, null, 0, endName);
                 break;
-            case "BFS":
+            case "Fastest Connection":
                 result = GraphAlgorithms.findAnyRouteBFS(start, endName);
                 break;
-            case "Penalty":
+            case "Fewest Transfers (with Penalty)":
                 result = GraphAlgorithms.findCheapestPathWithPenalty(start, endName, 5);
                 break;
             default:
@@ -151,29 +153,42 @@ public class RouteController implements Initializable {
 
     private void drawPath(Color lineColor, double startX, double startY, double endX, double endY) {
 
-            javafx.scene.canvas.Canvas canvas = new javafx.scene.canvas.Canvas(writableMap.getWidth(), writableMap.getHeight());
-            GraphicsContext gc = canvas.getGraphicsContext2D();
+       // javafx.scene.canvas.Canvas canvas = new javafx.scene.canvas.Canvas(writableMap.getWidth(), writableMap.getHeight());
+        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
 
-            gc.setStroke(lineColor);
-            gc.setLineWidth(4);
-            gc.strokeLine(startX, startY, endX, endY);
+        gc.setStroke(lineColor);
+        gc.setLineWidth(4);
+        gc.strokeLine(startX, startY, endX, endY);
 
-            SnapshotParameters params = new SnapshotParameters();
-            params.setFill(Color.TRANSPARENT);
-            WritableImage tempImage = canvas.snapshot(params, null);
+        SnapshotParameters params = new SnapshotParameters();
+        params.setFill(Color.TRANSPARENT);
+        WritableImage tempImage = canvas.snapshot(params, null);
 
-            PixelWriter writer = writableMap.getPixelWriter();
-            PixelReader reader = tempImage.getPixelReader();
+        PixelWriter writer = writableMap.getPixelWriter();
+        PixelReader reader = tempImage.getPixelReader();
 
-            for (int x = 0; x < tempImage.getWidth(); x++) {
-                for (int y = 0; y < tempImage.getHeight(); y++) {
-                    Color color = reader.getColor(x, y);
-                    if (!color.equals(Color.TRANSPARENT)) {
-                        writer.setColor(x, y, color);
-                    }
+        for (int x = 0; x < tempImage.getWidth(); x++) {
+            for (int y = 0; y < tempImage.getHeight(); y++) {
+                Color color = reader.getColor(x, y);
+                if (!color.equals(Color.TRANSPARENT)) {
+                    writer.setColor(x, y, color);
                 }
             }
         }
+    }
+
+
+//
+//    private void drawPath(Color lineColor, double startX, double startY, double endX, double endY) {
+//
+//        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
+//
+//        gc.setStroke(lineColor);
+//        gc.setLineWidth(4);
+//
+//
+//        gc.strokeLine(startX, startY, endX, endY);
+//    }
 
 
 
@@ -184,22 +199,24 @@ public class RouteController implements Initializable {
 
 
     @FXML
-    public void onClear() {
+    public void onClear(ActionEvent event) {
         resultListView.getItems().clear();
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, routeCanvas.getWidth(), routeCanvas.getHeight());
         startStationComboBox.setValue(null);
         destinationStationComboBox.setValue(null);
+        algorithmComboBox.setValue(null);
     }
 
     @FXML
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)   {
 
         try {
 
-        Graph graph = CSVLoader.loadGraphWithCoordinatesAndLinks("/ok/ubahn/route.csv", "/ok/ubahn/vienna_subway.csv");
+            this.graph = CSVLoader.loadGraphWithCoordinatesAndLinks("/ok/ubahn/route.csv", "/ok/ubahn/vienna_subway.csv");
             System.out.println("Loading Stations:");
             for (GraphNodeAL<String> station : graph.getStations()) {
+                StationRegistry.register(station.getName(), station.getX(), station.getY());
                 System.out.println(station.getName());
             }
 

@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.HBox?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="680.0" style="-fx-background-color: gray;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ok.ubahn.Controller.RouteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="680.0" style="-fx-background-color: gray;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.14-internal" fx:controller="ok.ubahn.Controller.RouteController">
    <children>
 
       <Label layoutX="139.0" layoutY="16.0" text="Vienna U-Bahn Route Finder" textFill="#f2eded">
@@ -46,30 +40,30 @@
       <ComboBox fx:id="destinationStationComboBox" layoutX="177.0" layoutY="114.0" prefWidth="150.0">
 
       </ComboBox>
-<!--      <ComboBox fx:id="algorithmComboBox" layoutX="20" layoutY="120" prefWidth="200">-->
-<!--         <items>-->
-<!--            <FXCollections fx:factory="observableArrayList">-->
-<!--               <String fx:value="Dijkstra"/>-->
-<!--               <String fx:value="DFS"/>-->
-<!--               <String fx:value="BFS"/>-->
-<!--               <String fx:value="Penalty"/>-->
-<!--            </FXCollections>-->
-<!--         </items>-->
-<!--      </ComboBox>-->
+      <ComboBox fx:id="algorithmComboBox" layoutX="215.0" layoutY="156.0" prefWidth="200">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Cheapest Path" />
+               <String fx:value="Depth First" />
+               <String fx:value="Fastest Connection" />
+               <String fx:value="Fewest Transfers (with Penalty)" />
+            </FXCollections>
+         </items>
+      </ComboBox>
 
 
       <Button fx:id="onFindRoute" layoutX="45.0" layoutY="156.0" mnemonicParsing="false" onAction="#onFindRoute" text="Find Route" />
       <Button fx:id="onClear" layoutX="139.0" layoutY="156.0" mnemonicParsing="false" onAction="#onClear" text="Clear" />
       <Label layoutX="324.0" layoutY="72.0" text="Cost :" textFill="#fffefe" />
       <ListView fx:id="resultListView" layoutX="364.0" layoutY="63.0" prefHeight="85.0" prefWidth="138.0" />
-<!--      <AnchorPane>-->
+      <!--      <AnchorPane>-->
 
-      <ImageView fx:id="routeImage" fitHeight="450.0" fitWidth="660.0" layoutX="45.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" >
+      <ImageView fx:id="routeImage" fitHeight="450.0" fitWidth="660.0" layoutX="45.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@route.png" />
          </image>
       </ImageView>
-         <Canvas fx:id="routeCanvas" layoutX="45.0" layoutY="228.0" width="660.0" height="450.0" />
-<!--      </AnchorPane>-->
+      <Canvas fx:id="routeCanvas" height="450.0" layoutX="45.0" layoutY="228.0" width="660.0" />
+      <!--      </AnchorPane>-->
    </children>
 </AnchorPane>
