@@ -96,7 +96,7 @@ public class RouteController implements Initializable {
             return;
         }
 
-        //clear ti previos route
+        //clear the previos route
         GraphicsContext gc = routeCanvas.getGraphicsContext2D();
         gc.clearRect(0, 0, routeCanvas.getWidth(), routeCanvas.getHeight());
 
