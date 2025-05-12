@@ -85,15 +85,12 @@ public class CSVLoader {
     }
 
     public static Graph loadGraphWithCoordinatesAndLinks(String stationCsv, String subwayCsv) {
-
         Graph graph = new Graph();
 
-        // String stationCsv = "/ok/ubahn/stations.csv";
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(
-
+               try (BufferedReader br = new BufferedReader(new InputStreamReader(
                 CSVLoader.class.getResourceAsStream("/ok/ubahn/stations.csv")))) {
 
-            String line=br.readLine(); //read header line
+            String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length < 3) continue;
@@ -108,29 +105,24 @@ public class CSVLoader {
             }
 
         } catch (Exception e) {
-            System.err.println("Loading Error: " + e.getMessage());
+            System.err.println("Error to load: " + e.getMessage());
             e.printStackTrace();
         }
 
-//String subwayCsv = "/ok/ubahn/vienna_subway.csv";
+
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                CSVLoader.class.getResourceAsStream("/ok/ubahn/stations.csv")))) {
+                CSVLoader.class.getResourceAsStream("/ok/ubahn/vienna_subway.csv")))) {
 
-            String line;
-            boolean firstLine = true;
+            String line = br.readLine();
             while ((line = br.readLine()) != null) {
-                if (firstLine) {
-                    firstLine = false;
-                    continue;
-                }
-
                 String[] parts = line.split(",");
-                if (parts.length < 5) continue;
+                if (parts.length < 4) continue;
 
                 String startName = parts[0].trim();
                 String endName = parts[1].trim();
                 String lineName = parts[2].trim();
-                double distance = Double.parseDouble(parts[4].trim());
+
+                double distance = 1.0;
 
                 GraphNodeAL<String> start = StationRegistry.get(startName);
                 GraphNodeAL<String> end = StationRegistry.get(endName);
@@ -138,17 +130,18 @@ public class CSVLoader {
                 if (start != null && end != null) {
                     graph.addLink(start, end, distance, lineName);
                 } else {
-                    System.err.println("No Station in StationRegistry: " + startName + " or " + endName);
+                    System.err.println("No connection: " + startName + " → " + endName);
                 }
             }
 
         } catch (Exception e) {
-            System.err.println("Loading Error: " + e.getMessage());
+            System.err.println("Erorr to load: " + e.getMessage());
             e.printStackTrace();
         }
 
         return graph;
     }
+
 
 
 

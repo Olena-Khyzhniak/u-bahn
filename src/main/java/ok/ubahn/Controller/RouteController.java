@@ -21,6 +21,7 @@ import ok.ubahn.Util.StationRegistry;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -72,6 +73,7 @@ public class RouteController implements Initializable {
     private static Graph subwayGraph;
 
 
+
     public void setGraph(Graph graph) {
         this.graph = graph;
     }
@@ -94,7 +96,11 @@ public class RouteController implements Initializable {
             return;
         }
 
+        //clear ti previos route
+        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, routeCanvas.getWidth(), routeCanvas.getHeight());
 
+        //draw a route
         for (int i = 0; i < path.size() - 1; i++) {
             GraphNodeAL<String> from = path.get(i);
             GraphNodeAL<String> to = path.get(i + 1);
@@ -115,7 +121,15 @@ public class RouteController implements Initializable {
 
     private List<GraphNodeAL<String>> findPath(String algorithm, String startName, String endName) {
         GraphNodeAL<String> start = StationRegistry.get(startName);
-        if (start == null) return null;
+
+        if (start == null) {
+            System.out.println("Start station not found: " + startName);
+            return null;
+        }
+
+        System.out.println("Using algorithm: " + algorithm);
+        System.out.println("Start: " + startName + ", End: " + endName);
+
 
         GraphAlgorithms.CostedPath result;
 
@@ -133,10 +147,16 @@ public class RouteController implements Initializable {
                 result = GraphAlgorithms.findCheapestPathWithPenalty(start, endName, 5);
                 break;
             default:
+                System.out.println("Unknown algorithm");
                 return null;
         }
 
-        return (result != null) ? castPath(result.pathList) : null;
+        if (result == null || result.pathList == null || result.pathList.isEmpty()) {
+            System.out.println("Algorithm returned no result");
+            return null;
+        }
+
+        return castPath(result.pathList);
     }
 
 
@@ -151,44 +171,44 @@ public class RouteController implements Initializable {
 
 
 
-    private void drawPath(Color lineColor, double startX, double startY, double endX, double endY) {
-
-       // javafx.scene.canvas.Canvas canvas = new javafx.scene.canvas.Canvas(writableMap.getWidth(), writableMap.getHeight());
-        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
-
-        gc.setStroke(lineColor);
-        gc.setLineWidth(4);
-        gc.strokeLine(startX, startY, endX, endY);
-
-        SnapshotParameters params = new SnapshotParameters();
-        params.setFill(Color.TRANSPARENT);
-        WritableImage tempImage = canvas.snapshot(params, null);
-
-        PixelWriter writer = writableMap.getPixelWriter();
-        PixelReader reader = tempImage.getPixelReader();
-
-        for (int x = 0; x < tempImage.getWidth(); x++) {
-            for (int y = 0; y < tempImage.getHeight(); y++) {
-                Color color = reader.getColor(x, y);
-                if (!color.equals(Color.TRANSPARENT)) {
-                    writer.setColor(x, y, color);
-                }
-            }
-        }
-    }
-
-
-//
 //    private void drawPath(Color lineColor, double startX, double startY, double endX, double endY) {
 //
+//       // javafx.scene.canvas.Canvas canvas = new javafx.scene.canvas.Canvas(writableMap.getWidth(), writableMap.getHeight());
 //        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
 //
 //        gc.setStroke(lineColor);
 //        gc.setLineWidth(4);
-//
-//
 //        gc.strokeLine(startX, startY, endX, endY);
+//
+//        SnapshotParameters params = new SnapshotParameters();
+//        params.setFill(Color.TRANSPARENT);
+//        WritableImage tempImage = canvas.snapshot(params, null);
+//
+//        PixelWriter writer = writableMap.getPixelWriter();
+//        PixelReader reader = tempImage.getPixelReader();
+//
+//        for (int x = 0; x < tempImage.getWidth(); x++) {
+//            for (int y = 0; y < tempImage.getHeight(); y++) {
+//                Color color = reader.getColor(x, y);
+//                if (!color.equals(Color.TRANSPARENT)) {
+//                    writer.setColor(x, y, color);
+//                }
+//            }
+//        }
 //    }
+
+
+
+    private void drawPath(Color lineColor, double startX, double startY, double endX, double endY) {
+
+        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
+
+        gc.setStroke(lineColor);
+        gc.setLineWidth(4);
+
+
+        gc.strokeLine(startX, startY, endX, endY);
+    }
 
 
 
@@ -213,10 +233,10 @@ public class RouteController implements Initializable {
 
         try {
 
-            this.graph = CSVLoader.loadGraphWithCoordinatesAndLinks("/ok/ubahn/route.csv", "/ok/ubahn/vienna_subway.csv");
+            this.graph = CSVLoader.loadGraphWithCoordinatesAndLinks("/ok/ubahn/stations.csv", "/ok/ubahn/vienna_subway.csv");
             System.out.println("Loading Stations:");
             for (GraphNodeAL<String> station : graph.getStations()) {
-                StationRegistry.register(station.getName(), station.getX(), station.getY());
+                //StationRegistry.register(station.getName(), station.getX(), station.getY());
                 System.out.println(station.getName());
             }
 
@@ -246,6 +266,6 @@ public class RouteController implements Initializable {
     }
 
 
-
-
+    public void goMap(ActionEvent event) {
+    }
 }

@@ -19,9 +19,11 @@ public class MainApp extends Application {
 
     private static Scene scene;
 
+
     @Override
     public void start(Stage stage) {
         try {
+
 
             scene = new Scene(loadFXML("Main"), 750, 750);
             stage.setScene(scene);
