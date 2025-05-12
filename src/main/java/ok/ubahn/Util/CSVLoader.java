@@ -113,7 +113,7 @@ public class CSVLoader {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
                 CSVLoader.class.getResourceAsStream("/ok/ubahn/vienna_subway.csv")))) {
 
-            String line = br.readLine();
+            String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length < 4) continue;
@@ -122,7 +122,7 @@ public class CSVLoader {
                 String endName = parts[1].trim();
                 String lineName = parts[2].trim();
 
-                double distance = 1.0;
+                double distance = 1;
 
                 GraphNodeAL<String> start = StationRegistry.get(startName);
                 GraphNodeAL<String> end = StationRegistry.get(endName);
